@@ -1,0 +1,22 @@
+<div id="<%= dom_id book %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= book.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Publication year:</strong>
+    <%= book.publication_year %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Author:</strong>
+    <%= book.author.name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Category:</strong>
+    <%= book.category.name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Cover:</strong>
+    <%= image_tag book.cover, alt: "Book cover", height: 200, width: 100 %>
+  </div>
+</div>

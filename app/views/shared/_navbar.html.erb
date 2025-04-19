@@ -1,0 +1,45 @@
+<!-- Main navigation container -->
+<nav
+  class="relative flex w-full flex-nowrap items-center justify-between bg-zinc-50 py-2 text-neutral-500 shadow-dark-mild hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4"
+  data-twe-navbar-ref>
+  <div class="flex w-full flex-wrap items-center justify-between px-3">
+    <div class="ms-2">
+      <%= link_to "Books", root_path, class: "text-xl text-black dark:text-white" %>
+    </div>
+    
+    <div
+      class="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
+      id="navbarSupportedContent2"
+      data-twe-collapse-item>
+      <!-- Left links -->
+      <ul
+        class="list-style-none me-auto flex flex-col ps-0 lg:mt-1 lg:flex-row"
+        data-twe-navbar-nav-ref>
+        <!-- Home link -->
+        <li
+          class="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2"
+          data-twe-nav-item-ref>
+          <%= link_to "Autores", authors_path, class: "text-black dark:text-white lg:px-2" %>
+        </li>
+        <!-- Features link -->
+        <li
+          class="mb-4 ps-2 lg:mb-0 lg:pe-1 lg:ps-0"
+          data-twe-nav-item-ref>
+          <%= link_to "Categorias", categories_path, class: "text-black dark:text-white lg:px-2" %>
+        </li>
+        <li class="mb-4 ps-2 lg:mb-0 lg:pe-1 lg:ps-0"
+          data-twe-nav-item-ref>
+
+          <%= button_to "Logout",
+              logout_path,
+              method: :delete,                # bate no SessionsController#destroy
+              form:  { data: { turbo_stream: false } }, # evita submit via Turbo Stream
+              class: "inline-flex items-center gap-2
+                      rounded-md bg-red-600 hover:bg-red-700
+                      px-4 py-2 text-sm font-medium text-white" %>
+        </li>
+        <!-- Pricing link -->
+      </ul>
+    </div>
+  </div>
+</nav>

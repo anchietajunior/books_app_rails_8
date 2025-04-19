@@ -1,0 +1,13 @@
+class CreateBooks < ActiveRecord::Migration[8.0]
+  def change
+    create_table :books do |t|
+      t.string :title
+      t.integer :publication_year
+      t.references :author, null: false, foreign_key: true
+      t.references :category, null: false, foreign_key: true
+      t.string :cover
+
+      t.timestamps
+    end
+  end
+end
