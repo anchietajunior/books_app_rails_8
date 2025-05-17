@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Blazer::Engine, at: "blazer"
+
   get "pages/contact"
   resource :session
   resources :passwords, param: :token
@@ -6,7 +8,11 @@ Rails.application.routes.draw do
   # Recursos
   resources :authors
   resources :categories
-  resources :books
+  resources :books do
+    collection do
+      get :report
+    end
+  end
 
   get "contact" => "pages#contact", as: :contact
 

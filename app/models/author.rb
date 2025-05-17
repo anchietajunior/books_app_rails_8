@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Author < ApplicationRecord
-  def author_with_country
-    puts "#{name} from #{country}"
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [ 80, 80 ]
   end
 end

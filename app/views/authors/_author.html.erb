@@ -11,4 +11,10 @@
     <strong class="block font-medium mb-2">Birthday:</strong>
     <%= author.birthday %>
   </div>
+
+  <div>
+    <% if author.image.attached? %>
+      <%= image_tag author.image.variant(:thumb) %>
+    <% end %>
+  </div>
 </div>

@@ -65,6 +65,6 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.expect(author: [ :name, :country, :birthday ])
+      params.expect(author: [ :name, :country, :birthday, :image ])
     end
 end

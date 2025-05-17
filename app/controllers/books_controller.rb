@@ -6,6 +6,32 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def report
+    @books = Book.all
+
+    pdf = Prawn::Document.new
+    pdf.text "Lista de Livros Disponíveis", size: 22, style: :bold
+    pdf.move_down 30
+
+    table_data = [ [ "ID", "Título", "Ano publicação", "Categoria", "Autor" ] ]
+    @books.each do |book|
+      table_data << [
+        book.id,
+        book.title,
+        book.publication_year,
+        book.category.name,
+        book.author.name
+      ]
+    end
+
+    pdf.table(table_data, header: true, row_colors: [ "F0F0F0", "FFFFFF" ])
+
+    send_data pdf.render,
+      filename: "Books.pdf",
+      type: "application/pdf",
+      disposition: "attachment"
+  end
+
   # GET /books/1 or /books/1.json
   def show
   end
